@@ -20,5 +20,5 @@ goto(start)
 end:
 	move("inventory",0,"equipped")
 	clear("inventory")
+	fill(false)
 	goto(99)
-
