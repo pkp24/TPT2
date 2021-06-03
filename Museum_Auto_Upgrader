@@ -1,7 +1,3 @@
-;:local int i
-;:local double test
-;:local string var
-
 :global string CurrentElement
 :global int CurrentBuyLevel
 :global int MaxBuyLevel
@@ -26,7 +22,7 @@ Debug = "new pos"
   clear("inventory")
   Position += 1
   CurrentElement = element("equipped", Position)
-  goto(if(Position > 200,99,if(CurrentElement == "" | CurrentElement == "UNIVERSAL",NextPosition,Continue)))
+  goto(if(Position > 200,99,if(CurrentElement == "",NextPosition,Continue)))
   Continue:
   buyMarket(CurrentElement, MaxBuyLevel)
   CurrentBuyLevel = tier("inventory",0)
