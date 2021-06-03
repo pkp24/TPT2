@@ -1,0 +1,43 @@
+;:local int i
+;:local double test
+;:local string var
+
+:global string CurrentElement
+:global int CurrentBuyLevel
+:global int MaxBuyLevel
+:global int Position
+
+key.m()
+isopen("museum")
+
+
+;Won't buy over this level, also can only upgrade 11 levels up
+global.int.set("MaxBuyLevel", 10)
+
+;Clear buying area for a fresh start
+clear("inventory")
+
+
+
+global.int.set("Position", -1)
+
+NextPosition:
+  Position += 1
+  CurrentElement = element("equipped", Position)
+  gotoif(NextPosition,CurrentElement == "" | CurrentElement == "UNIVERSAL")
+  buyMarket(CurrentElement, MaxBuyLevel)
+  CurrentBuyLevel = tier("inventory",0)
+gotoif(DontDelete, CurrentBuyLevel < tier("equipped",Position))
+delete("equipped",Position)
+
+;Skip it if you can never get better than it
+DontDelete:
+	gotoif(NextPosition, CurrentBuyLevel + 11 <= tier("equipped",Position))
+
+
+gotoif(Normal,CurrentBuyLevel < 1)
+executesync("MarketBuyer")
+Normal:
+	executesync("NormalBuyer")
+
+goto(if(Position < 5,NextPosition,99))
