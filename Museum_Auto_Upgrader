@@ -6,39 +6,36 @@
 :global int CurrentBuyLevel
 :global int MaxBuyLevel
 :global int Position
+:global string Debug
 
 key.m()
 isopen("museum")
 
 
 ;Won't buy over this level, also can only upgrade 11 levels up
-global.int.set("MaxBuyLevel", 10)
+global.int.set("MaxBuyLevel", 17)
 
 ;Clear buying area for a fresh start
-clear("inventory")
+
 
 
 
 Position = -1
-
 NextPosition:
+Debug = "new pos"
+  clear("inventory")
   Position += 1
   CurrentElement = element("equipped", Position)
-  gotoif(NextPosition,CurrentElement == "" | CurrentElement == "UNIVERSAL")
+  goto(if(Position > 200,99,if(CurrentElement == "" | CurrentElement == "UNIVERSAL",NextPosition,Continue)))
+  Continue:
   buyMarket(CurrentElement, MaxBuyLevel)
   CurrentBuyLevel = tier("inventory",0)
-gotoif(DontDelete, CurrentBuyLevel < tier("equipped",Position))
-delete("equipped",Position)
+
+delete(if(CurrentBuyLevel > tier("equipped",Position),"equipped",""),Position)
 
 ;Skip it if you can never get better than it
-DontDelete:
-	gotoif(NextPosition, CurrentBuyLevel + 11 <= tier("equipped",Position))
+gotoif(NextPosition, CurrentBuyLevel + 11 <= tier("equipped",Position))
 
+executesync(if(CurrentBuyLevel < 1,"NormalBuyer","MarketBuyer"))
 
-gotoif(Normal,CurrentBuyLevel < 1)
-executesync("MarketBuyer")
-goto(if(Position < 100,NextPosition,99))
-Normal:
-	executesync("NormalBuyer")
-
-goto(if(Position < 100,NextPosition,99))
+goto(if(Position < 200,NextPosition,99))
