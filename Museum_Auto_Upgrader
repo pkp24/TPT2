@@ -19,7 +19,7 @@ clear("inventory")
 
 
 
-global.int.set("Position", -1)
+Position = -1
 
 NextPosition:
   Position += 1
@@ -37,7 +37,8 @@ DontDelete:
 
 gotoif(Normal,CurrentBuyLevel < 1)
 executesync("MarketBuyer")
+goto(if(Position < 100,NextPosition,99))
 Normal:
 	executesync("NormalBuyer")
 
-goto(if(Position < 5,NextPosition,99))
+goto(if(Position < 100,NextPosition,99))
