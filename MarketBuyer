@@ -1,0 +1,23 @@
+:global string CurrentElement
+:global int CurrentBuyLevel
+:global int MaxBuyLevel
+:global int Position
+
+clear("inventory")
+move("equipped",Position,"inventory")
+fill(true)
+
+start:
+gotoif(end, CurrentBuyLevel + 11 <= tier("inventory",0))
+buyMarket(CurrentElement, MaxBuyLevel)
+combine(0)
+combine(0)
+combine(0)
+combine(0)
+combine(0)
+goto(start)
+
+end:
+	move("inventory",0,"equipped")
+	clear("inventory")
+	goto(99)
