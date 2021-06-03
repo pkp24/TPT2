@@ -10,6 +10,7 @@ fill(true)
 start:
 gotoif(end, CurrentBuyLevel + 13 <= tier("inventory",0))
 buy(CurrentElement)
+gotoif(end, tier("inventory",23) < 1)
 combine(0)
 combine(0)
 combine(0)
