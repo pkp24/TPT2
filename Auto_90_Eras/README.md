@@ -22,6 +22,7 @@ Requires 21 lines unlocked
   3. You must start the script in the proper region
   4. You must not have the screen to small
   5. Your build must be good enough or you will miss eras in difficult regions and difficulties
+  6. Don't use turbo exec, this version is absolutely not compatible
 
 
 ## Import codes
