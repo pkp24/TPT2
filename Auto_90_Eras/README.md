@@ -1,7 +1,7 @@
 # Era Auto Completer Package
   1. Edit all of the r# variables in Initializer to be "000000" but put 1 for each completed era difficulty in the specified region
   2. If you have completed a few regions already you can change rnumber to the new region to start in
-  3. Turn off auto restart in setting
+  3. Turn off auto restart in settings
   4. Ensure that your ratio isn't a square and is greater than 2:1, ie: make the screen look normal and don't make it to small
   5. If you didn't change rnumber then open tower testing and go to region 1
   6. Press (e) to start the script
