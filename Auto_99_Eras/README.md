@@ -16,6 +16,7 @@
 Requires 21 lines unlocked
 
 **!!! vvv REQUIRED vvv !!!**
+
   -Your game screen ratio must be greater than 2:1
   -Your auto restart must be off
   -You must start the script in the proper region
