@@ -17,10 +17,11 @@ Requires 21 lines unlocked
 
 **!!! vvv REQUIRED vvv !!!**
 
-  -Your game screen ratio must be greater than 2:1
-  -Your auto restart must be off
-  -You must start the script in the proper region
-  -You mustnot have the screen to small
+  1. Your game screen ratio must be greater than 2:1
+  2. Your auto restart must be off
+  3. You must start the script in the proper region
+  4. You must not have the screen to small
+  5. Your build must be good enough or you will miss eras in difficult regions and difficulties
 
 
 ## Import codes
