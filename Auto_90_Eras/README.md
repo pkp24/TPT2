@@ -17,7 +17,7 @@ Requires 21 lines unlocked
 
 **!!! vvv REQUIRED vvv !!!**
 
-  1. Your game screen ratio must be greater than 2:1
+  1. Your game screen ratio must similar to 16:9 in ratio
   2. Your auto restart must be off
   3. You must start the script in the proper region
   4. You must not have the screen to small
