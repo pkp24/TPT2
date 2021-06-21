@@ -1,12 +1,10 @@
 # Era Auto Completer Package
-  1. Edit all of the r# variables in Initializer to be "000000" but put 1 for each completed era difficulty in the specified region
-  2. If you have completed a few regions already you can change rnumber to the new region to start in
-  3. Turn off auto restart in settings
-  4. Ensure that your ratio isn't a square and is greater than 2:1, ie: make the screen look normal and don't make it to small
-  5. If you didn't change rnumber then open tower testing and go to region 1
-  6. Press (e) to start the script
-  7. Wait 13-20 hours for it to finish every era
-  8. If you stop the script at any time make sure to re-edit the r# variables to reflect your current completed eras
+  1. Edit all of the r# variables in Initializer to be "000000" but put 1 for each completed era difficulty in the specified region ie: 101000 for easy and hard being at era while nothign else is
+  2. Turn off auto restart in settings
+  3. Ensure that your ratio isn't a square and is similar to 16:9, ie: make the screen look normal and don't make it weird
+  5. Press (e) to start the script
+  6. Wait 13-20 hours for it to finish every era
+  7. If you stop the script at any time make sure to re-edit the r# variables to reflect your current completed eras
 
 
 # Import
@@ -19,10 +17,12 @@ Requires 21 lines unlocked
 
   1. Your game screen ratio must similar to 16:9 in ratio
   2. Your auto restart must be off
-  3. You must start the script in the proper region
+  3. You must start the script in forest in the towertesting area (TOWERTESTING IS NOT THE FIGHTING IT IS THE MENU)
   4. You must not have the screen to small
   5. Your build must be good enough or you will miss eras in difficult regions and difficulties
   6. Don't use turbo exec, this version is absolutely not compatible
+  7. Do not use dynamic UI
+  8. Have the era/upgrade tab open, this is by default so just don't close it
 
 
 ## Import codes
