@@ -4,7 +4,7 @@
 :global int MaxCraftLevel
 :global int Position
 :global int Toggle
-:global int Infinite
+:global int Repeat
 
 
 ;Clear buying area for a fresh start
@@ -34,6 +34,6 @@ gotoif(NextPosition, \
 		
 executesync(if(CurrentBuyLevel < 1 | MaxCraftLevel <= 12 & CurrentBuyLevel < 1, "NormalBuyer","MarketBuyer"))
 check:
-goto(if(Position < 200 & Toggle == 1,NextPosition, if(isopen("museum"),if(Infinite == 0, end, Reset), end)))
+goto(if(Position < 200 & Toggle == 1,NextPosition, if(isopen("museum"),if(Repeat == 0, end, Reset), end)))
 end:
 Toggle = 0
