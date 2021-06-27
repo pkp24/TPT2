@@ -4,15 +4,17 @@
 :global int MaxCraftLevel
 :global int Position
 :global int Toggle
+:global int Infinite
+
 
 ;Clear buying area for a fresh start
-
+Reset:
 Position = -1
 NextPosition:
   clear("inventory")
   Position += 1
   CurrentElement = element("equipped", Position)
-  goto(if(Position > 200,99,if(CurrentElement == "",NextPosition,Continue)))
+  goto(if(Position > 200,check,if(CurrentElement == "",NextPosition,Continue)))
   Continue:
   buyMarket(CurrentElement, min(MaxCraftLevel, MaxBuyLevel))
   CurrentBuyLevel = tier("inventory",0)
@@ -20,9 +22,18 @@ NextPosition:
 delete(if(CurrentBuyLevel > tier("equipped",Position),"equipped",""),Position)
 
 ;Skip it if you can never get better than it
-
-gotoif(NextPosition, (CurrentBuyLevel != -1 & (CurrentBuyLevel + 11 <= tier("equipped",Position))) | (CurrentBuyLevel == MaxCraftLevel & CurrentBuyLevel == tier("equipped",Position)) | MaxCraftLevel <= tier("equipped",Position))
+gotoif(NextPosition, \
+    (CurrentBuyLevel == -1  \
+        & (CurrentBuyLevel + 13 <= tier("equipped",Position)))  \
+    | ( \
+        (CurrentBuyLevel != -1  \
+            & (CurrentBuyLevel + 11 <= tier("equipped",Position))) \
+        | (CurrentBuyLevel == MaxCraftLevel \
+            & CurrentBuyLevel == tier("equipped",Position)) \
+        | MaxCraftLevel <= tier("equipped",Position)))  \
+		
 executesync(if(CurrentBuyLevel < 1 | MaxCraftLevel <= 12 & CurrentBuyLevel < 1, "NormalBuyer","MarketBuyer"))
-
-goto(if(Position < 200 | Toggle == 0,NextPosition, 99))
+check:
+goto(if(Position < 200 & Toggle == 1,NextPosition, if(isopen("museum"),if(Infinite == 0, end, Reset), end)))
+end:
 Toggle = 0
