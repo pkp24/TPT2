@@ -1,0 +1,14 @@
+:global int MaxCraftLevel
+:local int rofl
+
+gotoif(end, MaxCraftLevel <= tier("inventory",0))
+combine(0)
+gotoif(end, MaxCraftLevel <= tier("inventory",0))
+combine(0)
+combine(0)
+combine(0)
+combine(0)
+
+end:
+rofl = 1
+

@@ -1,37 +1,21 @@
-:global string CurrentElement
-:global int CurrentBuyLevel
+:global int MaxCraftLevel
 :global int MaxBuyLevel
-:global int Position
-:global string Debug
+:global int Toggle
 
 key.m()
 isopen("museum")
 
-
 ;Won't buy over this level, also can only upgrade 11 levels up
-global.int.set("MaxBuyLevel", 17)
+global.int.set("MaxBuyLevel", 15)
 
-;Clear buying area for a fresh start
+;Won't upgrade over this level
+global.int.set("MaxCraftLevel", 20)
 
 
-
-
-Position = -1
-NextPosition:
-Debug = "new pos"
-  clear("inventory")
-  Position += 1
-  CurrentElement = element("equipped", Position)
-  goto(if(Position > 200,99,if(CurrentElement == "",NextPosition,Continue)))
-  Continue:
-  buyMarket(CurrentElement, MaxBuyLevel)
-  CurrentBuyLevel = tier("inventory",0)
-
-delete(if(CurrentBuyLevel > tier("equipped",Position),"equipped",""),Position)
-
-;Skip it if you can never get better than it
-gotoif(NextPosition, CurrentBuyLevel + 11 <= tier("equipped",Position))
-
-executesync(if(CurrentBuyLevel < 1,"NormalBuyer","MarketBuyer"))
-
-goto(if(Position < 200,NextPosition,99))
+gotoif(end, toggle == 1)
+toggle = 1
+execute("Museum_Engine")
+stop("Museum_Auto_Upgrader")
+end:
+toggle = 0
+stop("Museum_Engine")
