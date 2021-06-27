@@ -1,4 +1,5 @@
 :global int MaxCraftLevel
+:local int rofl
 
 gotoif(end, MaxCraftLevel <= tier("inventory",0))
 combine(0)
@@ -7,5 +8,7 @@ combine(0)
 combine(0)
 combine(0)
 combine(0)
+
 end:
-goto(99)
+rofl = 1
+
