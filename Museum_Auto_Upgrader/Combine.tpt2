@@ -1,0 +1,11 @@
+:global int MaxCraftLevel
+
+gotoif(end, MaxCraftLevel <= tier("inventory",0))
+combine(0)
+gotoif(end, MaxCraftLevel <= tier("inventory",0))
+combine(0)
+combine(0)
+combine(0)
+combine(0)
+end:
+goto(99)
