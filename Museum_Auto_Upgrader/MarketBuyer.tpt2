@@ -4,17 +4,18 @@
 :global int MaxCraftLevel
 :global int Position
 :global int Toggle
+:global int Counter
 
 clear("inventory")
 move("equipped",Position,"inventory")
 fill(true)
 
 start:
-gotoif(end, Toggle == 0)
+gotoif(end, Toggle == 0 | counter >= 30000)
 gotoif(end, CurrentBuyLevel + 11 <= tier("inventory",0) | MaxCraftLevel <= tier("inventory",0))
 buyMarket(CurrentElement, min(MaxCraftLevel, MaxBuyLevel))
 gotoif(end, tier("inventory",23) < 1)
-
+counter += 1
 executesync("combine")
 
 goto(start)

@@ -4,6 +4,7 @@
 :global int MaxCraftLevel
 :global int Position
 :global int Toggle
+:global int Counter
 
 clear("inventory")
 move("equipped",Position,"inventory")
