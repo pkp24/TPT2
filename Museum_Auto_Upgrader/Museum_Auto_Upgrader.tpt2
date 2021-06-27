@@ -1,6 +1,7 @@
 :global string CurrentElement
 :global int CurrentBuyLevel
 :global int MaxBuyLevel
+:global int MaxCraftLevel
 :global int Position
 :global string Debug
 
@@ -9,7 +10,8 @@ isopen("museum")
 
 
 ;Won't buy over this level, also can only upgrade 11 levels up
-global.int.set("MaxBuyLevel", 17)
+global.int.set("MaxBuyLevel", 15)
+global.int.set("MaxCraftLevel", 20)
 
 ;Clear buying area for a fresh start
 
@@ -24,7 +26,7 @@ Debug = "new pos"
   CurrentElement = element("equipped", Position)
   goto(if(Position > 200,99,if(CurrentElement == "",NextPosition,Continue)))
   Continue:
-  buyMarket(CurrentElement, MaxBuyLevel)
+  buyMarket(CurrentElement, min(MaxCraftLevel, MaxBuyLevel))
   CurrentBuyLevel = tier("inventory",0)
 
 delete(if(CurrentBuyLevel > tier("equipped",Position),"equipped",""),Position)
@@ -32,6 +34,6 @@ delete(if(CurrentBuyLevel > tier("equipped",Position),"equipped",""),Position)
 ;Skip it if you can never get better than it
 gotoif(NextPosition, CurrentBuyLevel + 11 <= tier("equipped",Position))
 
-executesync(if(CurrentBuyLevel < 1,"NormalBuyer","MarketBuyer"))
+executesync(if(CurrentBuyLevel < 1 | MaxCraftLevel <= 12,"NormalBuyer","MarketBuyer"))
 
 goto(if(Position < 200,NextPosition,99))

@@ -1,6 +1,7 @@
 :global string CurrentElement
 :global int CurrentBuyLevel
 :global int MaxBuyLevel
+:global int MaxCraftLevel
 :global int Position
 
 clear("inventory")
@@ -8,8 +9,8 @@ move("equipped",Position,"inventory")
 fill(true)
 
 start:
-gotoif(end, CurrentBuyLevel + 11 <= tier("inventory",0))
-buyMarket(CurrentElement, MaxBuyLevel)
+gotoif(end, CurrentBuyLevel + 11 <= tier("inventory",0) | MaxCraftLevel <= tier("inventory",0))
+buyMarket(CurrentElement, min(MaxCraftLevel, MaxBuyLevel))
 gotoif(end, tier("inventory",23) < 1)
 combine(0)
 combine(0)
