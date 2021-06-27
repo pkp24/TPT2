@@ -32,7 +32,7 @@ Debug = "new pos"
 delete(if(CurrentBuyLevel > tier("equipped",Position),"equipped",""),Position)
 
 ;Skip it if you can never get better than it
-gotoif(NextPosition, CurrentBuyLevel + 11 <= tier("equipped",Position))
+gotoif(NextPosition, CurrentBuyLevel + 11 <= tier("equipped",Position) | CurrentBuyLevel == MaxCraftLevel)
 
 executesync(if(CurrentBuyLevel < 1 | MaxCraftLevel <= 12,"NormalBuyer","MarketBuyer"))
 
