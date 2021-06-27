@@ -18,7 +18,7 @@ NextPosition:
   CurrentElement = element("equipped", Position)
   goto(if(Position > 200,check,if(CurrentElement == "",NextPosition,Continue)))
   Continue:
-  buyMarket(CurrentElement, if(tier("equipped", Position) == MaxCraftLevel , 0 , min(MaxCraftLevel, MaxBuyLevel)))
+  buyMarket(CurrentElement,, min(MaxCraftLevel, MaxBuyLevel))
   CurrentBuyLevel = tier("inventory",0)
 
 delete(if(CurrentBuyLevel > tier("equipped",Position),"equipped",""),Position)
