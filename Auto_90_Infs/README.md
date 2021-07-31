@@ -1,7 +1,8 @@
 # Inf Auto Completer Package
-  1. Edit all of the r# variables in Initializer to be "000000" but put 1 for each completed inf difficulty in the specified region ie: 101000 for easy and hard being at inf while nothign else is
-  2. Turn off auto restart in settings
-  3. Ensure that your ratio isn't a square and is similar to 16:9, ie: make the screen look normal and don't make it weird
+  1. Ignore universal mouse debug and click(8) temp. The bundle import includes them but they are just for testing.
+  2. Edit all of the r# variables in Initializer to be "000000" but put 1 for each completed inf difficulty in the specified region ie: 101000 for easy and hard being at inf while nothign else is
+  3. Turn off auto restart in settings
+  4. Ensure that your ratio isn't a square and is similar to 16:9, ie: make the screen look normal and don't make it weird
   5. Press (e) to start the script
   6. Wait until it finishes or opens random buildings
   7. If you stop the script at any time make sure to re-edit the r# variables to reflect your current completed infs
