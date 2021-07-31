@@ -6,6 +6,7 @@
   6. Wait until it finishes or opens random buildings
   7. If you stop the script at any time make sure to re-edit the r# variables to reflect your current completed infs
 
+0 = Neutral, 1 = Light, 2 = Elec, 3 = Fire, 4 = Dark, 5 = Nature, 6 = Air, 7 = Water, 8 = Ground, 9 = Univ
 
 # Import
 
