@@ -1,6 +1,7 @@
 :global int MaxCraftLevel
 :global int MaxBuyLevel
 :global int Toggle
+:global int Repeat
 
 key.m()
 isopen("museum")
@@ -10,6 +11,8 @@ global.int.set("MaxBuyLevel", 15)
 
 ;Won't upgrade over this level
 global.int.set("MaxCraftLevel", 20)
+
+global.int.set("Repeat", 1)
 
 
 gotoif(end, toggle == 1)
