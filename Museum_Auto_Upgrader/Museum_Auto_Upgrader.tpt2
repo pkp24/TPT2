@@ -14,8 +14,6 @@ global.int.set("MaxCraftLevel", 20)
 
 gotoif(end, toggle == 1)
 toggle = 1
-execute("Museum_Engine")
-stop("Museum_Auto_Upgrader")
+executesync("Museum_Engine")
 end:
 toggle = 0
-stop("Museum_Engine")

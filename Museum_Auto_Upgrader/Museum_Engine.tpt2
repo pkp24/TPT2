@@ -5,6 +5,9 @@
 :global int Position
 :global int Toggle
 
+; Engage turbo exec v2 (if it is present)
+executesync("turbo start")
+
 ;Clear buying area for a fresh start
 
 Position = -1
@@ -12,7 +15,7 @@ NextPosition:
   clear("inventory")
   Position += 1
   CurrentElement = element("equipped", Position)
-  goto(if(Position > 200,99,if(CurrentElement == "",NextPosition,Continue)))
+  goto(if(Position > 200,end,if(CurrentElement == "",NextPosition,Continue)))
   Continue:
   buyMarket(CurrentElement, min(MaxCraftLevel, MaxBuyLevel))
   CurrentBuyLevel = tier("inventory",0)
@@ -24,5 +27,10 @@ delete(if(CurrentBuyLevel > tier("equipped",Position),"equipped",""),Position)
 gotoif(NextPosition, (CurrentBuyLevel != -1 & (CurrentBuyLevel + 11 <= tier("equipped",Position))) | (CurrentBuyLevel == MaxCraftLevel & CurrentBuyLevel == tier("equipped",Position)) | MaxCraftLevel <= tier("equipped",Position))
 executesync(if(CurrentBuyLevel < 1 | MaxCraftLevel <= 12 & CurrentBuyLevel < 1, "NormalBuyer","MarketBuyer"))
 
-goto(if(Position < 200 | Toggle == 0,NextPosition, 99))
+goto(if(Position < 200 | Toggle == 0, NextPosition, end))
+
+; All jumps must come here, to ensure turbo is stopped.
+end:
+executesync("turbo stop")
+; Need one instruction at the end that is safe to repeat
 Toggle = 0
