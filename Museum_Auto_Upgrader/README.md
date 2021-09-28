@@ -6,7 +6,7 @@ This is an auto-upgrading gem script for the museum. All gems in the inventory a
 3. Set what your Max Craft Level will be in the Museum_Auto_Buyer. (Will not craft higher than that) 
 4. Press m while in the museum and let it roll.
 
-Use https://github.com/Xenos6666/TPT2_scripts/tree/main/common/execution_stack with it to save yourself hours.
+Use https://github.com/Xenos6666/TPT2_scripts/tree/main/common/turbo_exec with it to save yourself hours.
 
 # Import
 
