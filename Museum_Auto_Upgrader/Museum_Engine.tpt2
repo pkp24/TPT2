@@ -1,3 +1,5 @@
+:name D0S.Museum v2.0.0:Engine
+
 :global string CurrentElement
 :global int CurrentBuyLevel
 :global int MaxBuyLevel
@@ -24,10 +26,16 @@ delete(if(CurrentBuyLevel > tier("equipped",Position),"equipped",""),Position)
 
 ;Skip it if you can never get better than it
 
-gotoif(NextPosition, (CurrentBuyLevel != -1 & (CurrentBuyLevel + 11 <= tier("equipped",Position))) | (CurrentBuyLevel == MaxCraftLevel & CurrentBuyLevel == tier("equipped",Position)) | MaxCraftLevel <= tier("equipped",Position))
-executesync(if(CurrentBuyLevel < 1 | MaxCraftLevel <= 12 & CurrentBuyLevel < 1, "NormalBuyer","MarketBuyer"))
+gotoif(NextPosition,\
+  CurrentBuyLevel != -1 && CurrentBuyLevel + 11 <= tier("equipped",Position) ||\
+  MaxCraftLevel <= tier("equipped",Position))
+executesync(if(\
+  CurrentBuyLevel <= 1,\
+  "D0S.Museum v2.0.0:NormalBuyer",\
+  "D0S.Museum v2.0.0:MarketBuyer"\
+))
 
-goto(if(Position < 200 | Toggle == 0, NextPosition, end))
+gotoif(NextPosition, Position < 200 && Toggle == 1)
 
 ; All jumps must come here, to ensure turbo is stopped.
 end:

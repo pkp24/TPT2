@@ -1,5 +1,6 @@
+:name D0S.Museum v2.0.0:Combine
+
 :global int MaxCraftLevel
-:local int rofl
 
 gotoif(end, MaxCraftLevel <= tier("inventory",0))
 combine(0)
@@ -10,5 +11,4 @@ combine(0)
 combine(0)
 
 end:
-rofl = 1
-
+wait(0.0)

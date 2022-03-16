@@ -1,3 +1,5 @@
+:name D0S.Museum v2.0.0:Upgrader
+
 :global int MaxCraftLevel
 :global int MaxBuyLevel
 :global int Toggle
@@ -6,14 +8,14 @@ key.m()
 isopen("museum")
 
 ;Won't buy over this level, also can only upgrade 11 levels up
-global.int.set("MaxBuyLevel", 15)
+MaxBuyLevel = 15
 
 ;Won't upgrade over this level
-global.int.set("MaxCraftLevel", 20)
+MaxCraftLevel = 50
 
 
-gotoif(end, toggle == 1)
-toggle = 1
-executesync("Museum_Engine")
+gotoif(end, Toggle == 1)
+Toggle = 1
+executesync("D0S.Museum v2.0.0:Engine")
 end:
-toggle = 0
+Toggle = 0
