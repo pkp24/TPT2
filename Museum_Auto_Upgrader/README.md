@@ -1,6 +1,9 @@
 # Museum Auto Upgrader Package
 
 This is an auto-upgrading gem script for the museum. All gems in the inventory area on the right will be deleted on script start. Transmutation to create universal gems isn't supported - instead, upgrade gems to a set level and transmute all the high-level gems a single time, which is more efficient.
+
+**Requires both the "Quick Combine" skill and the Museum to be fully upgraded in the HQ!**
+
 1. Place the gems you will upgrade into your equipped area.
 2. Set what your Max Buy Level will be in the Museum_Auto_Buyer. (Will not buy gems higher than that)
 3. (Optional) Set what your Max Craft Level will be in the Museum_Auto_Buyer. Usually this can be left at 50,
