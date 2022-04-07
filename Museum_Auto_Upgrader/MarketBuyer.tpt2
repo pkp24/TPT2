@@ -1,24 +1,28 @@
+:name D0S.Museum v2.0.0:MarketBuyer
+
 :global string CurrentElement
 :global int CurrentBuyLevel
 :global int MaxBuyLevel
 :global int MaxCraftLevel
 :global int Position
 :global int Toggle
+:local int limit
 
 clear("inventory")
-move("equipped",Position,"inventory")
+move("equipped", Position, "inventory")
 fill(true)
+limit = min(CurrentBuyLevel + 11, MaxCraftLevel)
+goto(loop_end)
 
 start:
-gotoif(end, Toggle == 0)
-gotoif(end, CurrentBuyLevel + 11 <= tier("inventory",0) | MaxCraftLevel <= tier("inventory",0))
 buyMarket(CurrentElement, min(MaxCraftLevel, MaxBuyLevel))
-gotoif(end, tier("inventory",23) < 1)
+gotoif(end, tier("inventory", 23) < 1)
 
-executesync("combine")
+executesync("D0S.Museum v2.0.0:Combine")
 
-goto(start)
+loop_end:
+gotoif(start, Toggle != 0 && tier("inventory", 0) < limit)
 
 end:
-	move("inventory",0,"equipped")
-	goto(99)
+move("inventory", 0, "equipped")
+wait(0.0)
